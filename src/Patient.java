@@ -40,4 +40,16 @@ public class Patient {
     public String getHospital() {
         return hospital;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", symptom='" + symptom + '\'' +
+                ", diagnosis='" + diagnosis + '\'' +
+                ", date=" + date +
+                ", hospital='" + hospital + '\'' +
+                '}';
+    }
 }

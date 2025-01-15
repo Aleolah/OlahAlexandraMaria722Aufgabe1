@@ -11,12 +11,14 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class App {
-    ArrayList<Patient> patients;
-    public  List<Patient> run ()throws ParserConfigurationException, IOException, SAXException {
-        List<Patient> patients = new ArrayList<>();
+
+
+    public  ArrayList<Patient> run () throws ParserConfigurationException, IOException, SAXException {
+        ArrayList<Patient> patients = new ArrayList<>();
 
         DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -28,7 +30,7 @@ public class App {
         document.getDocumentElement().normalize();
 
 
-        NodeList nodeList = document.getElementsByTagName("student");
+        NodeList nodeList = document.getElementsByTagName("log");
 
 
         for (int i = 0; i < nodeList.getLength(); i++) {
@@ -48,10 +50,12 @@ public class App {
 
 
                 patients.add(new Patient(id, name, symptom,diagnosis, date1 ,hospital));
+
             }
         }
 
-       return patients;
+
+      return patients;
     }
 
 
@@ -62,13 +66,11 @@ public class App {
         return nodeList.item(0).getTextContent();
     }
 
-    public void sort(){
-
+    public void filterPatientsByName(ArrayList<Patient> patients, char letter) {
+        patients.stream().filter(patient -> patient.getName().charAt(0) == letter).distinct().forEach(patient -> System.out.println(patient.getName()));
     }
-    public void filter(){
-
-    }
-    public void writeToFile() {
+    public void sortBySymptom(ArrayList<Patient> patients) {
+        patients.stream().filter(patient -> patient.getSymptom().equals("Fieber")).sorted(Comparator.comparing(p->p.getDate())).forEach(patient -> System.out.println(patient.getDate()+patient.getName() + patient.getSymptom()));
 
     }
 }
