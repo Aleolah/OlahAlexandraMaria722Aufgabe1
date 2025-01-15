@@ -74,4 +74,11 @@ public class App {
                 .forEach(patient -> System.out.println(patient.getDate()+patient.getName() + patient.getSymptom()));
 
     }
+    public void write(ArrayList<Patient> patients) {
+        String File = "fallanzahl.txt";
+
+
+
+    }
+
 }
