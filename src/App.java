@@ -70,7 +70,8 @@ public class App {
         patients.stream().filter(patient -> patient.getName().charAt(0) == letter).distinct().forEach(patient -> System.out.println(patient.getName()));
     }
     public void sortBySymptom(ArrayList<Patient> patients) {
-        patients.stream().filter(patient -> patient.getSymptom().equals("Fieber")).sorted(Comparator.comparing(p->p.getDate())).forEach(patient -> System.out.println(patient.getDate()+patient.getName() + patient.getSymptom()));
+          patients.stream().filter(patient -> patient.getSymptom().equals("Fieber")).sorted(Comparator.comparing(p->p.getDate()))
+                .forEach(patient -> System.out.println(patient.getDate()+patient.getName() + patient.getSymptom()));
 
     }
 }

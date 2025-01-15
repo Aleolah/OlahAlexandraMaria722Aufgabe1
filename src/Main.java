@@ -20,6 +20,7 @@ public class Main {
         String input = sc.nextLine();
         char letter = input.charAt(0);
         app.filterPatientsByName(patients,letter);
+        app.sortBySymptom(patients);
 
 
 
